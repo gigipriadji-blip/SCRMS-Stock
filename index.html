@@ -1066,7 +1066,7 @@
         var html = "";
         vendors.forEach(v => {
           var currentHostUrl = window.location.href.split('?')[0];
-          var linkPublikVendor = `${currentHostUrl}?page=vendor&user=${v.username}`;
+          var linkPublikVendor = `${currentHostUrl.replace('index.html', '')}vendor.html?user=${v.username}`;
           var badgeAksesHtml = ""; v.akses.forEach(a => { if(a.trim() !== "") badgeAksesHtml += `<span class="badge bg-secondary me-1 text-uppercase">${a}</span>`; });
           html += `<tr><td class="text-start fw-bold fs-6">${v.nama}</td><td class="text-start"><strong class="text-primary font-monospace">${v.username}</strong></td><td class="text-start">${badgeAksesHtml}</td><td class="align-middle"><button class="btn btn-sm btn-outline-primary fw-bold mb-1 w-100" onclick="siapkanEditVendor('${v.username}', '${v.nama}', '${v.akses.join(',')}')">Edit Akses</button><button class="btn btn-sm btn-dark fw-bold mb-1 w-100" onclick="salinTautanVendor('${linkPublikVendor}')">Salin Tautan</button><button class="btn btn-sm btn-outline-danger w-100" onclick="hapusVendor('${v.username}')">Hapus</button></td></tr>`;
         });
